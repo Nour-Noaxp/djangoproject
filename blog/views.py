@@ -27,4 +27,3 @@ def about(request):
 
 def contact(request):
   return HttpResponse("This is my contact page displayed with an Http response and not a template rendering")
-
