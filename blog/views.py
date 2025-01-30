@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 from .models import Post
 from django.utils import timezone
 from .forms import PostForm
@@ -10,9 +10,8 @@ def new(request):
     form = PostForm(request.POST)
     if form.is_valid():
       form.save()
-
-  context = {'form':form}
-  return render(request, 'blog/new.html', context)
+      return redirect('post_list')
+  return render(request, 'blog/new.html', {'form':form})
 
 def home(request):
   categories = ['culture', 'sports', 'food', 'politics', 'religion', 'nature']

@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>ProjectX Blog</title>
   </head>
   <body>
-    <header>
+    <header class="">
       <h1><a href="/"><em>ProjectX Blog</em></a></h1>
+      <div class="icon_and_button flex items-center justify-between">
+        <icon><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+        </svg>
+        </icon>
+        <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"><a href="/new">New Post</a></button>
+      </div>
     </header>
 
     {% for post in posts %}
