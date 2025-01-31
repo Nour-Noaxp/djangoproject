@@ -1,17 +1,14 @@
-<! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-</head>
     <title>Home</title>
   </head>
-
   <body class="bg-blue-950 text-white font-serif m-auto">
-    This is my Home Page
-
-    <div>This website offers you blogs in these categories</div>
+    <div class ="text-3xl font-serif">This is my Home Page</div>
+    <div>Choose your preferred category :</div>
     <nav class="flex mt-2">
       <ul class="flex flex-row">
         {% for category in categories %}
