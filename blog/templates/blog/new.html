@@ -7,14 +7,19 @@
   <body class="bg-gray-100">
     <header>
       <h3 class="text-3xl font-semibold">Post Form</h3>
-      <hr>
+      <hr />
     </header>
     <main>
-      <form class="mx-12 my-32 space-y-8 items-center" action="/create/" method="post">
-        {% csrf_token %}
-        {{form}}
-        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-          <input type="submit">
+      <form
+        class="mx-12 my-32 space-y-8 items-center"
+        action="/new/"
+        method="post"
+      >
+        {% csrf_token %} {{form}}
+        <button
+          class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        >
+          <input type="submit" />
         </button>
       </form>
     </main>
