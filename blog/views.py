@@ -3,17 +3,19 @@ from .models import Post
 from .forms import PostForm
 from django.contrib import messages
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 
 def new(request):
     form = PostForm()
+    users = User.objects.all()
     if request.method == "POST":
         form = PostForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, "Post successfully created")
             return redirect("post_list")
-    return render(request, "blog/new.html", {"form": form})
+    return render(request, "blog/new.html", {"form": form, "users": users})
 
 
 def home(request):
