@@ -4,17 +4,17 @@
   Home
 {% endblock %}
 
- {% block content %}
+{% block content %}
  <h1>Home</h1>
  <p>Check out my <a href="/about">About</a>page.</p>
  <div>Choose your preferred category :</div>
- <nav class="flex mt-2">
-  <ul class="flex flex-row">
-    {% for category in categories %}
-    <li class="mr-5 uppercase list-none inline-block font-medium">
-      {{category}}
-    </li>
-    {% endfor %}
-  </ul>
-</nav>
- {% endblock %}
+  <nav class="flex mt-2">
+    <ul class="flex flex-row">
+      {% for category in categories %}
+        <li class="mr-5 uppercase list-none inline-block font-medium">
+          {{ category }}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
