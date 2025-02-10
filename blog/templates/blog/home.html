@@ -5,16 +5,23 @@
 {% endblock %}
 
 {% block content %}
- <h1>Home</h1>
- <p>Check out my <a href="/about">About</a>page.</p>
- <div>Choose your preferred category :</div>
-  <nav class="flex mt-2">
-    <ul class="flex flex-row">
-      {% for category in categories %}
-        <li class="mr-5 uppercase list-none inline-block font-medium">
-          {{ category }}
-        </li>
-      {% endfor %}
-    </ul>
-  </nav>
+<div class="font-bold text-2xl mt-5 flex flex-col gap-5">
+ <p>Check out my <a class="underline text-blue-800" href="/about">About </a>page.</p>
+</div>
+
+<p>Create a new Post :</p>
+<div class="icon_and_button flex items-center justify-between max-w-2xl">
+  <button type="button" class="mx-4 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"><a href="/new">New Post</a></button>
+</div>
+<p>Available Categories :</p>
+<nav class="flex mt-2">
+  <ul class="flex flex-row">
+    {% for category in categories %}
+      <li class="mr-5 uppercase list-none inline-block font-medium">
+        {{ category }}
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+</div>
 {% endblock %}
