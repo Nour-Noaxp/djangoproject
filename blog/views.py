@@ -29,6 +29,24 @@ def post_list(request):
     )
     return render(request, "blog/post_list.html", {"posts": posts})
 
+def show(request, pk):
+    return render(request, "blog/show.html", {"pk": pk})
+
+def delete(request, pk):
+    post = Post.objects.get(id=pk)
+    post.delete()
+    return redirect("post_list")
+
+def edit(request, pk):
+    form = PostForm()
+    post = Post.objects.get(id=pk)
+    if request.method == "POST":
+        form.PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Post successfully updated")
+            return redirect("post_list")
+    return render (request, "blog/edit.html", {"form": form, "pk": pk})
 
 def about(request):
     return render(request, "blog/about.html")
