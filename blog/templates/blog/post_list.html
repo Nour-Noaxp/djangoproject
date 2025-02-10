@@ -1,35 +1,39 @@
-{% extends "blog/layout.html" %}
-
-{% block title %}
-  Posts Lists
-{% endblock %}
-
+{% extends "blog/layout.html" %} {% block title %} Posts Lists {% endblock %}
+<hr />
 {% block content %}
-  <h1 class="font-bold text-2xl mt-5 py-5">Post Lists</h1>
-  <table class="w-full border border-gray-300">
-    <thead class="bg-gray-200"> 
-      <tr>
-        <th class="border border-black-400 px-4 py-2">Title</th>
-        <th class="border border-black-400 px-4 py-2">Text</th>
-        <th class="border border-black-400 px-4 py-2">Published Date</th>
-        <th class="border border-black-400 px-4 py-2">Author</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for post in posts %}
-        <tr>
-          <td class="border border-black-300 px-4 py-2"><a href="">{{ post.title}}</a></td>
-          <td class="border border-black-300 px-4 py-2"><p>{{ post.text|linebreaksbr }}</p></td>
-          <td class="border border-black-300 px-4 py-2">{{ post.published_date }}</td>
-          <td class="border border-black-300 px-4 py-2">{{ post.author }}</td>
-        </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  <div class="icon_and_button flex items-center justify-between max-w-2xl">
-    <button type="button" class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"><a href="/new">New Post</a></button>
-  </div>
-  <div class="font-bold text-2xl mt-5 flex flex-col gap-5">
-    <p>Check out my <a class="underline text-blue-800" href="/home">Home </a>page.</p>
-  </div>
+<h1 class="font-bold text-2xl mt-5 py-5">Post Lists</h1>
+<table class="w-full border border-gray-300">
+  <thead class="bg-gray-200">
+    <tr>
+      <th class="border border-black-400 px-4 py-2">Title</th>
+      <th class="border border-black-400 px-4 py-2">Text</th>
+      <th class="border border-black-400 px-4 py-2">Published Date</th>
+      <th class="border border-black-400 px-4 py-2">Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td class="border border-black-300 px-4 py-2">
+        <a href="">{{ post.title }}</a>
+      </td>
+      <td class="border border-black-300 px-4 py-2">
+        <p>{{ post.text|linebreaksbr }}</p>
+      </td>
+      <td class="border border-black-300 px-4 py-2">
+        {{ post.published_date|date:"H:i d/m/o" }}
+      </td>
+      <td class="border border-black-300 px-4 py-2">{{ post.author }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+<div class="icon_and_button flex items-center justify-between max-w-2xl">
+  <button
+    type="button"
+    class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"
+  >
+    <a href="/new">New Post</a>
+  </button>
+</div>
 {% endblock %}
