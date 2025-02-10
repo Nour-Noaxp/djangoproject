@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
- <p>Check out my <a href="/about">About </a>page.</p>
+<div class="font-bold text-2xl mt-5 flex flex-col gap-5">
+ <p>Check out my <a class="underline text-blue-800" href="/about">About </a>page.</p>
 
 <div>Create a new Post :</div>
   <div class="icon_and_button flex items-center justify-between max-w-2xl">
@@ -21,4 +22,5 @@
       {% endfor %}
     </ul>
   </nav>
+</div>
 {% endblock %}
