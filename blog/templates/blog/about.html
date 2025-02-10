@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <title>About</title>
-  </head>
-  <body>
-    This is my About Page rendered with a template
-  </body>
-</html>
+{% extends "blog/layout.html" %}
+
+{% block title %}
+  About
+{% endblock %}
+
+{% block content %}
+  <div class="font-bold text-2xl mt-5">
+    <p>Check out my <a href="/">Home</a>page.</p>
+    <p>This is my About Page rendered with a template</p>
+  </div>
+{% endblock %}

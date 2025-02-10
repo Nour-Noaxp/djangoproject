@@ -1,25 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>Home</title>
-  </head>
-  <body class="bg-blue-950 text-white font-serif m-auto">
-    <div class="text-3xl font-serif">This is my Home Page</div>
-    <div>Choose your preferred category :</div>
-    <nav class="flex mt-2">
-      <ul class="flex flex-row">
-        {% for category in categories %}
+{% extends "blog/layout.html" %}
+
+{% block title %}
+  Home
+{% endblock %}
+
+{% block content %}
+ <h1>Home</h1>
+ <p>Check out my <a href="/about">About</a>page.</p>
+ <div>Choose your preferred category :</div>
+  <nav class="flex mt-2">
+    <ul class="flex flex-row">
+      {% for category in categories %}
         <li class="mr-5 uppercase list-none inline-block font-medium">
-          {{category}}
+          {{ category }}
         </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </body>
-</html>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}
