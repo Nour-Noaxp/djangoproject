@@ -4,17 +4,21 @@
   Home
 {% endblock %}
 
- {% block content %}
- <h1>Home</h1>
- <p>Check out my <a href="/about">About</a>page.</p>
- <div>Choose your preferred category :</div>
- <nav class="flex mt-2">
-  <ul class="flex flex-row">
-    {% for category in categories %}
-    <li class="mr-5 uppercase list-none inline-block font-medium">
-      {{category}}
-    </li>
-    {% endfor %}
-  </ul>
-</nav>
- {% endblock %}
+{% block content %}
+ <p>Check out my <a href="/about">About </a>page.</p>
+
+<div>Create a new Post :</div>
+  <div class="icon_and_button flex items-center justify-between max-w-2xl">
+  <button type="button" class="mx-4 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"><a href="/new">New Post</a></button>
+  </div>
+  <div>Available Categories :</div>
+  <nav class="flex mt-2">
+    <ul class="flex flex-row">
+      {% for category in categories %}
+        <li class="mr-5 uppercase list-none inline-block font-medium">
+          {{category}}
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+{% endblock %}

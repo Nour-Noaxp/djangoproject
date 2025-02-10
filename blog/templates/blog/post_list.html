@@ -5,21 +5,28 @@
 {% endblock %}
 
 {% block content %}
-  <h1 class="font-bold text-2xl mt-5">Post Lists</h1>
+  <h1 class="font-bold text-2xl mt-5 py-5">Post Lists</h1>
+  <table class="w-full border border-gray-300">
+    <thead class="bg-gray-200"> 
+      <tr>
+        <th class="border border-black-400 px-4 py-2">Title</th>
+        <th class="border border-black-400 px-4 py-2">Text</th>
+        <th class="border border-black-400 px-4 py-2">Published Date</th>
+        <th class="border border-black-400 px-4 py-2">Author</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in posts %}
+        <tr>
+          <td class="border border-black-300 px-4 py-2"><a href="">{{ post.title}}</a></td>
+          <td class="border border-black-300 px-4 py-2"><p>{{ post.text|linebreaksbr }}</p></td>
+          <td class="border border-black-300 px-4 py-2">{{ post.published_date }}</td>
+          <td class="border border-black-300 px-4 py-2">{{ post.author }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
   <div class="icon_and_button flex items-center justify-between max-w-2xl">
-    <icon><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-    </svg>
-    </icon>
     <button type="button" class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"><a href="/new">New Post</a></button>
   </div>
-
-  {% for post in posts %}
-    <article>
-      <time>publication: {{ post.published_date }}</time>
-      <h2 class ="font-bold"><a href="">{{ post.title}}</a></h2>
-      <p>{{ post.text|linebreaksbr }}</p>
-    </article>
-  {% endfor %}
-
-{% endblock %}
+  {% endblock %}
