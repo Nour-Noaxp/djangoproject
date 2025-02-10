@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="eng">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title class="text-3xl bold">
+      {% block title %}
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <nav class="bg-blue-600 text-white flex justify-around font-bold py-6 text-xl">
+      <a href="">Home</a> |
+      <a href="/about">About</a> |
+      <a href="/posts">Posts</a> |
+      <a href="/contact">Contact</a>
+    </nav>
+
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>
