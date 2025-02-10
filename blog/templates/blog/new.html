@@ -5,33 +5,32 @@
 {% endblock %}
 
 {% block content %}
-  <h1>New Post</h1>
   <body class="bg-gray-100">
     <header>
       <h3 class="text-3xl font-semibold">Post Form</h3>
       <hr />
     </header>
     <div>
-      <form class="" action="/new/" method="post">
+      <form class="flex flex-col gap-5 max-w-2xl mx-auto my-12 text-2xl border border-black border rounded-xl p-12" action="/new/" method="post">
         {% csrf_token %}
-        <label for="author">Authors :</label>
+        <label class="h-10 font-bold" for="author">Authors :</label>
         <select name="author">
           {% for user in users %}
-            <option value="{{ user.id }}">{{ user.username }}</option>
+            <option class="bg-white" value="{{ user.id }}">{{ user.username }}</option>
           {% endfor %}
         </select>
 
-        <label for="title">Title :</label>
-        <input type="text" name="title">
+        <label class ="font-bold" for="title">Title :</label>
+        <input class="bg-white h-10" type="text" name="title">
 
-        <label for="text">Text</label>
-        <textarea name="text"></textarea>
+        <label class ="font-bold" for="text">Text</label>
+        <textarea class="bg-white" name="text"></textarea>
 
-        <label for="published_date">Published Date :</label>
-        <input type="datetime-local" name="published_date">
+        <label class ="font-bold" for="published_date">Published Date :</label>
+        <input class="bg-white h-10" type="datetime-local" name="published_date">
         
         <button
-          class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-2">
+          class="mx-8 my-8 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-2">
           <input type="submit"/>
         </button>
       </form>
