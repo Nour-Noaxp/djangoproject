@@ -4,6 +4,7 @@ from .forms import PostForm
 from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.contrib import messages
 
 def new(request):
     form = PostForm()
@@ -31,9 +32,11 @@ def show(request, post_id):
     return render(request, "events/show.html", {"post": post})
 
 def delete(request, pk):
-    post = Post.objects.get(id=pk)
+    post = Post.objects.get(pk=pk)
     post.delete()
+    messages.success(request, "Post successfully deleted!")
     return redirect("post_list")
+# return Response({ "message": "Post successfully deleted!"})
 
 def edit(request, post_id):
     users = User.objects.all()
