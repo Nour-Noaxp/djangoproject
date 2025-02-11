@@ -1,50 +1,77 @@
 {% extends "events/layout.html" %} {% block title %} Posts Lists {% endblock %}
 <hr />
 {% block content %}
-<form method="post">
-  {% csrf_token %}
-  <h1 class="font-bold text-2xl mt-5 py-5">Post Lists</h1>
-  <table class="w-full border border-gray-300">
-    <thead class="bg-gray-200">
-      <tr>
-        <th class="border border-black-400 px-4 py-2">Title</th>
-        <th class="border border-black-400 px-4 py-2">Text</th>
-        <th class="border border-black-400 px-4 py-2">Published Date</th>
-        <th class="border border-black-400 px-4 py-2">Author</th>
-        <th class="border border-black-400 px-4 py-2">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for post in posts %}
-      <tr>
-        <td class="border border-black-300 px-4 py-2">
-          <a href="">{{ post.title }}</a>
-        </td>
-        <td class="border border-black-300 px-4 py-2">
-          <p>{{ post.text|linebreaksbr }}</p>
-        </td>
-        <td class="border border-black-300 px-4 py-2">
-          {{ post.published_date|date:"H:i d/m/o" }}
-        </td>
-        <td class="border border-black-300 px-4 py-2">
-          {{ post.author }}
-        </td>
-        <td class="flex flex-col">
-          <a href="{% url "show_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
-          <a href="{% url "edit_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
-          <a href="{% url "delete_post" pk=post.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-</form>
-<div class="icon_and_button flex items-center justify-between max-w-2xl">
-  <button
-    type="button"
-    class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"
-  >
-    <a href="/new">New Post</a>
-  </button>
+<div class="flex flex-col max-w-[180px]">
+  <a href="/new" type="button"
+  class="my-5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2">New Post</a>
+  <a href="/new_video" type="button"
+  class="my-5 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2">New Video</a>
 </div>
+  <h1 class="font-bold text-2xl mt-5 py-5">Post Lists</h1>
+  <div class="flex flex-col gap-12">
+    <table class="border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border border-black-400 px-4 py-2">Title</th>
+          <th class="border border-black-400 px-4 py-2">Text</th>
+          <th class="border border-black-400 px-4 py-2">Published Date</th>
+          <th class="border border-black-400 px-4 py-2">Author</th>
+          <th class="border border-black-400 px-4 py-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for post in posts %}
+        <tr>
+          <td class="border border-black-300 px-4 py-2">
+            <a href="">{{ post.title }}</a>
+          </td>
+          <td class="border border-black-300 px-4 py-2">
+            <p>{{ post.text|linebreaksbr }}</p>
+          </td>
+          <td class="border border-black-300 px-4 py-2">
+            {{ post.published_date|date:"H:i d/m/o" }}
+          </td>
+          <td class="border border-black-300 px-4 py-2">
+            {{ post.author }}
+          </td>
+          <td class="flex flex-col">
+            <a href="{% url "show_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
+            <a href="{% url "edit_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
+            <a href="{% url "delete_post" pk=post.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <table class="border border-gray-300">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border border-black-400 px-4 py-2">Name</th>
+          <th class="border border-black-400 px-4 py-2">Url</th>
+          <th class="border border-black-400 px-4 py-2">Published Date</th>
+          <th class="border border-black-400 px-4 py-2">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for video in videos %}
+        <tr>
+          <td class="border border-black-300 px-4 py-2">
+            <a href="">{{ video.name }}</a>
+          </td>
+          <td class="border border-black-300 px-4 py-2">
+            <p>{{ video.url }}</p>
+          </td>
+          <td class="border border-black-300 px-4 py-2">
+            {{ video.published_date|date:"H:i d/m/o" }}
+          </td>
+          <td class="flex flex-col">
+            <a href="{% url "show_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
+            <a href="{% url "edit_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
+            <a href="{% url "delete_video" pk=video.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 {% endblock %}
