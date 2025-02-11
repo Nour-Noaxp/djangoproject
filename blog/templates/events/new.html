@@ -1,14 +1,14 @@
-{% extends "blog/layout.html" %} {% block title %} Edit Post {% endblock %}
+{% extends "events/layout.html" %} {% block title %} New Post {% endblock %}
 <hr />
 {% block content %}
 <div>
   <header>
-    <h3 class="text-3xl font-semibold">Edit Post</h3>
+    <h3 class="text-3xl font-semibold">Post Form</h3>
   </header>
   <div>
     <form
       class="flex flex-col gap-5 max-w-2xl mx-auto my-12 text-2xl border border-black border rounded-xl p-12"
-      action="/edit/"
+      action="/new/"
       method="post"
     >
       {% csrf_token %}

@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.utils import timezone
 from django.contrib.auth.models import User
 
-
 def new(request):
     form = PostForm()
     users = User.objects.all()
@@ -15,42 +14,38 @@ def new(request):
             form.save()
             messages.success(request, "Post successfully created")
             return redirect("post_list")
-    return render(request, "blog/new.html", {"form": form, "users": users})
-
+    return render(request, "events/new.html", {"form": form, "users": users})
 
 def home(request):
     categories = ["culture", "sports", "food", "politics", "religion", "nature"]
-    return render(request, "blog/home.html", {"categories": categories})
-
+    return render(request, "events/home.html", {"categories": categories})
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
         "published_date"
     )
-    return render(request, "blog/post_list.html", {"posts": posts})
+    return render(request, "events/post_list.html", {"posts": posts})
 
-def show(request, pk):
-    return render(request, "blog/show.html", {"pk": pk})
+def show(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    return render(request, "events/show.html", {"post": post})
 
 def delete(request, pk):
     post = Post.objects.get(id=pk)
     post.delete()
     return redirect("post_list")
 
-def edit(request, pk):
-    form = PostForm()
-    post = Post.objects.get(id=pk)
-    if request.method == "POST":
-        form.PostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, "Post successfully updated")
-            return redirect("post_list")
-    return render (request, "blog/edit.html", {"form": form, "pk": pk})
+def edit(request, post_id):
+    users = User.objects.all()
+    post = Post.objects.get(pk=post_id)
+    form = PostForm(request.POST or None, instance=post)
+    if form.is_valid():
+        form.save()
+        return redirect("post_list")
+    return render(request, "events/edit.html", {"post": post, "form": form, "users": users})
 
 def about(request):
-    return render(request, "blog/about.html")
-
+    return render(request, "events/about.html")
 
 def contact(request):
     return HttpResponse(

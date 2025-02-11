@@ -1,0 +1,75 @@
+{% extends "events/layout.html" %}
+{% block title %}
+  Edit Post
+{% endblock %}
+<hr/>
+{% block content %}
+  <div>
+    <header>
+      <h3 class="text-3xl font-semibold">Edit Post</h3>
+    </header>
+    <div>
+      <form
+        class="flex flex-col gap-5 max-w-2xl mx-auto my-12 text-2xl border border-black border rounded-xl p-12"
+        action=""
+        method="post"
+      >
+        {% csrf_token %}
+        <label
+          class="h-10 font-bold"
+          for="author"
+          >Authors :</label
+        >
+        <select name="author">
+          {% for user in users %}
+          <option
+            class="bg-white"
+            value="{{ user.id }}"
+          >
+            {{ user.username }}
+          </option>
+          {% endfor %}
+        </select>
+
+        <label
+          class="font-bold"
+          for="title"
+          >Title :</label
+        >
+        <input
+          class="bg-white h-10"
+          type="text"
+          name="title"
+          value="{{ post.title }}"
+        />
+
+        <label
+          class="font-bold"
+          for="text"
+          >Text</label
+        >
+        <textarea
+          class="bg-white"
+          name="text"
+        >{{ post.text }} </textarea>
+
+        <label
+          class="font-bold"
+          for="published_date"
+          >Published Date :</label
+        >
+        <input
+          class="bg-white h-10"
+          type="datetime-local"
+          name="published_date"
+          value="{{ post.published_date }}"
+        />
+        
+        <input
+          class="mx-8 my-8 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"
+          type="submit" value="Update"
+        />
+      </form>
+    </div>
+  </div>
+{% endblock %}
