@@ -40,8 +40,7 @@
     <label class="font-bold" for="published_date">
       Published Date :
     </label>
-    <input class="bg-white h-10" type="datetime-local" name="published_date" value="2025-02-12T15:45"/>
-    
+    <input class="bg-white h-10" type="datetime-local" name="published_date" value="{{ post.published_date|date:"Y-m-d H:i" }}"/>
     <input class="mx-8 my-8 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-2" type="submit" value="Update"/>
   </form>
 {% endblock %}
