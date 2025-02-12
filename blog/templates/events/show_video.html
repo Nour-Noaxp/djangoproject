@@ -11,8 +11,16 @@
     <div>
       <h1 class="text-center font-bold text-2xl"> {{ video.name }} </h1>
     </div>
-    <div class="border border border-black-400 rounded-xl px-4 py-2">
-      <p> {{ video.url }} </p>
+    <div class="border border border-black-400 rounded-xl px-4 py-2 flex justify-center">
+      <iframe
+      width="560"
+      height="315"
+      src="{{ video.url }}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
     </div>
   </div>
 {% endblock %}

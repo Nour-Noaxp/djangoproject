@@ -58,8 +58,18 @@
           <td class="border border-black-300 px-4 py-2">
             <a href="">{{ video.name }}</a>
           </td>
-          <td class="border border-black-300 px-4 py-2">
-            <p>{{ video.url }}</p>
+          <td>
+            <div class="flex justify-center items-center p-5">
+              <iframe
+                width="560"
+                height="315"
+                src="{{ video.url }}"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen></iframe>
+            </div>
           </td>
           <td class="border border-black-300 px-4 py-2">
             {{ video.published_date|date:"H:i d/m/o" }}

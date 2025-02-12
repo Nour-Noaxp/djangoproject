@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, HttpResponse, redirect, get_object_or_404
 from .models import Post
 from .models import Video
 from .forms import PostForm
@@ -41,7 +41,7 @@ def delete(request, pk):
 
 def edit(request, post_id):
     users = User.objects.all()
-    post = Post.objects.get(pk=post_id)
+    post = Post.objects.get(pk=post_id) #post = get_object_or_404(Post, id=post_id)
     form = PostForm(request.POST or None, instance=post)
     if form.is_valid():
         form.save()
@@ -55,16 +55,23 @@ def contact(request):
     return HttpResponse(
         "This is my contact page displayed with an Http response and not a template rendering"
     )
+def url_formatter(url):
+    url_fragments = url.split("watch?v=")
+    return url_fragments[0] + "/embed/" + url_fragments[1]
 
 def new_video(request):
     form = VideoForm()
+    url = ""
     if request.method == "POST":
         form = VideoForm(request.POST)
         if form.is_valid():
+            url = url_formatter(form.instance.url) #form.data["url"] => error  / form.cleaned_data["url"]
+            form.instance.url = url
             form.save()
             messages.success(request, "Video successfully created")
             return redirect("post_list")
-    return render(request, "events/new_video.html", {"form": form})
+    return render(request, "events/new_video.html", {"form": form, "url": url})
+
 
 def show_video(request, video_id):
     video = Video.objects.get(pk=video_id)
