@@ -10,16 +10,6 @@
     <title class="text-3xl bold">{% block title %} {% endblock %}</title>
   </head>
   <body class="bg-gray-100">
-    {% comment %} {% if messages %}
-        <ul class="messages absolute bottom-[30px] right-[30px] px-2 py-2 m-2 bg-slate-200 rounded-lg text-violet-800">
-          {% for message in messages %}
-            <li class="{% if message.tags %}{{ message.tags }}{% endif %} flex gap-3 items-center">
-              <span>{{ message }}</span>
-            </li>
-          {% endfor %}
-        </ul>
-      {% endif %} {% endcomment %}
-
     <nav
       class="bg-blue-600 text-white flex justify-around font-bold py-6 text-2xl"
     >
@@ -27,7 +17,7 @@
       <a href="/posts">Posts</a> |
       <a href="/contact">Contact</a>
     </nav>
-
+    
     {% if messages %}
       {% for message in messages %}
       <div class="flex justify-center justify-items-center gap-3 rounded-lg font-bold border border-2 border-green-500 p-5 mt-5 mx-20 bg-white">

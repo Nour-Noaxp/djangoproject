@@ -16,7 +16,10 @@
     </label>
     <select class="bg-white" name="author">
       {% for user in users %}
-        <option value="{{ user.id }}">
+        <option value="{{ user.id }}"
+        {% if post.author == user %}
+          selected
+        {% endif %}>
           {{ user.username }}
         </option>
       {% endfor %}
