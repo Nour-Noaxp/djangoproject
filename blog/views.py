@@ -31,8 +31,8 @@ def show(request, post_id):
     post = Post.objects.get(pk=post_id)
     return render(request, "show.html", {"post": post})
 
-def delete(request, pk):
-    post = Post.objects.get(pk=pk)
+def delete(request, post_id):
+    post = Post.objects.get(pk=post_id)
     post.delete()
     messages.success(request, "Post successfully deleted!")
     return redirect("post_list")

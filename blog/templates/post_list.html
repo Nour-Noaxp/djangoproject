@@ -33,7 +33,7 @@
         <td class="flex flex-col">
           <a href="{% url "show_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
           <a href="{% url "edit_post" post.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
-          <a href="{% url "delete_post" pk=post.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
+          <a href="{% url "delete_post" post.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
         </td>
       </tr>
       {% endfor %}
