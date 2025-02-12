@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse, redirect
+from django.shortcuts import render, redirect
 from .models import Post
 from .forms import PostForm
 from django.contrib import messages
@@ -15,28 +15,27 @@ def new(request):
             form.save()
             messages.success(request, "Post successfully created")
             return redirect("post_list")
-    return render(request, "events/new.html", {"form": form, "users": users})
+    return render(request, "new.html", {"form": form, "users": users})
 
 def home(request):
     categories = ["culture", "sports", "food", "politics", "religion", "nature"]
-    return render(request, "events/home.html", {"categories": categories})
+    return render(request, "home.html", {"categories": categories})
 
 def post_list(request):
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by(
         "published_date"
     )
-    return render(request, "events/post_list.html", {"posts": posts})
+    return render(request, "post_list.html", {"posts": posts})
 
 def show(request, post_id):
     post = Post.objects.get(pk=post_id)
-    return render(request, "events/show.html", {"post": post})
+    return render(request, "show.html", {"post": post})
 
 def delete(request, pk):
     post = Post.objects.get(pk=pk)
     post.delete()
     messages.success(request, "Post successfully deleted!")
     return redirect("post_list")
-# return Response({ "message": "Post successfully deleted!"})
 
 def edit(request, post_id):
     users = User.objects.all()
@@ -45,12 +44,7 @@ def edit(request, post_id):
     if form.is_valid():
         form.save()
         return redirect("post_list")
-    return render(request, "events/edit.html", {"post": post, "form": form, "users": users})
+    return render(request, "edit.html", {"post": post, "form": form, "users": users})
 
 def about(request):
-    return render(request, "events/about.html")
-
-def contact(request):
-    return HttpResponse(
-        "This is my contact page displayed with an Http response and not a template rendering"
-    )
+    return render(request, "about.html")

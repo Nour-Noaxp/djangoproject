@@ -1,4 +1,5 @@
-{% extends "events/layout.html" %} {% block title %} Posts Lists {% endblock %}
+{% extends "layout.html" %}
+{% block title %} Posts Lists {% endblock %}
 <hr />
 {% block content %}
 <form method="post">
@@ -18,7 +19,7 @@
       {% for post in posts %}
       <tr>
         <td class="border border-black-300 px-4 py-2">
-          <a href="">{{ post.title }}</a>
+          <a href="{% url "show_post" post.id %}" class="text-blue-600 underline font-bold">{{ post.title }}</a>
         </td>
         <td class="border border-black-300 px-4 py-2">
           <p>{{ post.text|linebreaksbr }}</p>
@@ -39,12 +40,7 @@
     </tbody>
   </table>
 </form>
-<div class="icon_and_button flex items-center justify-between max-w-2xl">
-  <button
-    type="button"
-    class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"
-  >
-    <a href="/new">New Post</a>
-  </button>
+<div class="flex">
+  <a href="/new" class="mx-8 my-8 text-white bg-blue-600 hover:bg-blue-800 font-medium rounded-lg px-5 py-2">New Post</a>
 </div>
 {% endblock %}
