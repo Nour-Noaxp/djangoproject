@@ -1,4 +1,5 @@
-{% extends "events/layout.html" %} {% block title %} Posts Lists {% endblock %}
+{% extends "layout.html" %}
+{% block title %} Posts Lists {% endblock %}
 <hr />
 {% block content %}
 <div class="flex flex-col max-w-[180px]">
@@ -23,7 +24,7 @@
         {% for post in posts %}
         <tr>
           <td class="border border-black-300 px-4 py-2">
-            <a href="">{{ post.title }}</a>
+            <a href="{% url "show_post" post.id %}" class="text-blue-600 underline font-bold">{{ post.title }}</a>
           </td>
           <td class="border border-black-300 px-4 py-2">
             <p>{{ post.text|linebreaksbr }}</p>
@@ -56,7 +57,7 @@
         {% for video in videos %}
         <tr>
           <td class="border border-black-300 px-4 py-2">
-            <a href="">{{ video.name }}</a>
+            <a href="{% url "show_video" video.id %}" class="text-blue-600 underline font-bold">{{ video.name }}</a>
           </td>
           <td>
             <div class="flex justify-center items-center p-5">

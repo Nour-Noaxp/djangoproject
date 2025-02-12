@@ -1,16 +1,12 @@
-{% extends "events/layout.html" %}
+{% extends "layout.html" %}
 {% block title %}
   Show Video
 {% endblock %}
 <hr/>
 {% block content %}
-  <div>
-    <p><span class="font-bold">Published Date : </span>{{ post.published_date }} </p>
-  </div>
+  <p><span class="font-bold">Published Date : </span>{{ video.published_date }} </p>
   <div class="flex flex-col gap-5 max-w-7xl m-auto">
-    <div>
-      <h1 class="text-center font-bold text-2xl"> {{ video.name }} </h1>
-    </div>
+    <h1 class="text-center font-bold text-2xl"> {{ video.name }} </h1>
     <div class="border border border-black-400 rounded-xl px-4 py-2 flex justify-center">
       <iframe
       width="560"
