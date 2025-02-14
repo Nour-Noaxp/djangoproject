@@ -28,12 +28,9 @@ def post_list(request):
   return render(request, "post_list.html", {"posts": posts, "videos": videos})
 
 def feed(request):
-  # posts = Post.objects.filter(published_date__lte=timezone.now()).values_list("title", "text", "published_date")
-  # videos = Video.objects.filter(published_date__lte=timezone.now()).values_list("name", "url", "published_date")
-  # content = posts.union(videos).order_by("published_date")
   posts = list(Post.objects.filter(published_date__lte=timezone.now()))
   videos = list(Video.objects.filter(published_date__lte=timezone.now()))
-  content = (posts + videos).sort(reverse = True, key=get_date)
+  content = sorted(posts + videos, key=lambda x: x.published_date, reverse=True)
   for element in content:
     element.is_video = hasattr(element, "url")
   return render(request, "feed.html", {"content": content})

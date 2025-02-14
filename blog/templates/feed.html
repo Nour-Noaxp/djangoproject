@@ -1,7 +1,54 @@
+{% extends "layout.html" %}
+{% block title %} Feed {% endblock %}
+<hr />
+{% block content %}
 {% for element in content %}
-  {{ element }}
-  {% comment %} {% if hasattr(element, "title") %}
-    {{ element.title }}
-  {% endif %} {% endcomment %}
+  {% if element.is_video %}
+    <div class="flex flex-col gap-5 justify-items-center items-center">
+      <div class="w-[600px] h-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <iframe
+        class="w-[600px] border border-gray-200 rounded-lg"
+        width="560"
+        height="315"
+        src="{{ element.url }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+        </iframe>
+        <div class="p-5">
+          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ element.name}}</h5>
+          <div class="mt-20">
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ element.published_date}}</p>
+            <a href="{% url "show_video" element.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Show Video 
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    {% else %}
+      <div class="w-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+        <div class="p-5 flex flex-col">
+          <div>
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ element.title }}</h5>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ element.text }}</p>
+          </div>
+          <div class="w-[600px] mt-20">
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ element.published_date }}</p>
+            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ element.author }}</p>
+            <a href="{% url "show_post" element.id %}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Show Post
+                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+  {% endif %}
 {% endfor %}
-
+{% endblock %}
