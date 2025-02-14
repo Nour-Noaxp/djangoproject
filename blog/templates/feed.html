@@ -1,14 +1,13 @@
 {% extends "layout.html" %}
 {% block title %} Feed {% endblock %}
-<hr />
 {% block content %}
-{% for element in content %}
-  <div class="flex flex-col justify-center items-center">
-    {% if element.is_video %}
-      {% include "video-partial.html" %}
-    {% else %}
-      {% include "post-partial.html" %}
-    {% endif %}
-  </div>
-{% endfor %}
+  {% for element in content %}
+    <div class="flex flex-col items-center">
+      {% if element.is_video %}
+        {% include "video_partial.html" %}
+      {% else %}
+        {% include "post_partial.html" %}
+      {% endif %}
+    </div>
+  {% endfor %}
 {% endblock %}
