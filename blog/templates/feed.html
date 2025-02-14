@@ -1,0 +1,7 @@
+{% for element in content %}
+  {{ element }}
+  {% comment %} {% if hasattr(element, "title") %}
+    {{ element.title }}
+  {% endif %} {% endcomment %}
+{% endfor %}
+

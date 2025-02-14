@@ -3,6 +3,7 @@ from .import views
 
 urlpatterns = [
     path("posts/", views.post_list, name="post_list"),
+    path("feed/", views.feed, name="feed"),
     path("", views.home, name="home"),
     path("home/", views.home, name="home"),
     path("about/", views.about, name="about"),

@@ -27,6 +27,12 @@ def post_list(request):
   videos = Video.objects.filter(published_date__lte=timezone.now()).order_by("published_date")
   return render(request, "post_list.html", {"posts": posts, "videos": videos})
 
+def feed(request):
+  posts = Post.objects.filter(published_date__lte=timezone.now()).values_list("title", "text", "published_date")
+  videos = Video.objects.filter(published_date__lte=timezone.now()).values_list("name", "url", "published_date")
+  content = posts.union(videos).order_by("published_date")
+  return render(request, "feed.html", {"content": content})
+
 def show(request, post_id):
   post = Post.objects.get(pk=post_id)
   return render(request, "show.html", {"post": post})
@@ -49,22 +55,15 @@ def edit(request, post_id):
 def about(request):
   return render(request, "about.html")
 
-def url_formatter(url):
-  url_fragments = url.split("watch?v=")
-  return url_fragments[0] + "/embed/" + url_fragments[1]
-
 def new_video(request):
   form = VideoForm()
-  url = ""
   if request.method == "POST":
     form = VideoForm(request.POST)
     if form.is_valid():
-      url = url_formatter(form.instance.url)
-      form.instance.url = url
       form.save()
       messages.success(request, "Video successfully created")
       return redirect("post_list")
-  return render(request, "new_video.html", {"form": form, "url": url})
+  return render(request, "new_video.html", {"form": form})
 
 def show_video(request, video_id):
   video = Video.objects.get(pk=video_id)

@@ -55,32 +55,32 @@
       </thead>
       <tbody>
         {% for video in videos %}
-        <tr>
-          <td class="border border-black-300 px-4 py-2">
-            <a href="{% url "show_video" video.id %}" class="text-blue-600 underline font-bold">{{ video.name }}</a>
-          </td>
-          <td>
-            <div class="flex justify-center items-center p-5">
-              <iframe
-                width="560"
-                height="315"
-                src="{{ video.url }}"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen></iframe>
-            </div>
-          </td>
-          <td class="border border-black-300 px-4 py-2">
-            {{ video.published_date|date:"H:i d/m/o" }}
-          </td>
-          <td class="flex flex-col">
-            <a href="{% url "show_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
-            <a href="{% url "edit_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
-            <a href="{% url "delete_video" pk=video.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
-          </td>
-        </tr>
+          <tr>
+            <td class="border border-black-300 px-4 py-2">
+              <a href="{% url "show_video" video.id %}" class="text-blue-600 underline font-bold">{{ video.name }}</a>
+            </td>
+            <td>
+              <div class="flex justify-center items-center p-5">
+                <iframe
+                  width="560"
+                  height="315"
+                  src="{{ video.url }}"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin"
+                  allowfullscreen></iframe>
+              </div>
+            </td>
+            <td class="border border-black-300 px-4 py-2">
+              {{ video.published_date|date:"H:i d/m/o" }}
+            </td>
+            <td class="flex flex-col">
+              <a href="{% url "show_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Show</a>
+              <a href="{% url "edit_video" video.id %}" class="mx-8 my-8 text-white bg-gray-400 font-medium rounded-lg px-5 py-2">Edit</a>
+              <a href="{% url "delete_video" pk=video.id %}" class="mx-8 my-8 text-white bg-red-400 font-medium rounded-lg px-5 py-2">Delete</a>
+            </td>
+          </tr>
         {% endfor %}
       </tbody>
     </table>
