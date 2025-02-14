@@ -3,9 +3,9 @@
 <hr />
 {% block content %}
 {% for element in content %}
-  {% if element.is_video %}
-    <div class="flex flex-col gap-5 justify-items-center items-center">
-      <div class="w-[600px] h-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+  <div class="flex justify-center items-center">
+    {% if element.is_video %}
+      <div class="w-[600px] h-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mb-5">
         <iframe
         class="w-[600px] border border-gray-200 rounded-lg"
         width="560"
@@ -31,7 +31,7 @@
         </div>
       </div>
     {% else %}
-      <div class="w-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700">
+      <div class="w-[600px] bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mb-5">
         <div class="p-5 flex flex-col">
           <div>
             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ element.title }}</h5>
@@ -49,6 +49,7 @@
           </div>
         </div>
       </div>
-  {% endif %}
+    {% endif %}
+  </div>
 {% endfor %}
 {% endblock %}
