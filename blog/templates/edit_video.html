@@ -43,7 +43,7 @@
       class="bg-white h-10 border border-black"
       type="datetime-local"
       name="published_date"
-      value="{{ video.published_date }}"
+      value="{{ video.published_date|date:"Y-m-d H:i" }}"
     />
 
     <input
