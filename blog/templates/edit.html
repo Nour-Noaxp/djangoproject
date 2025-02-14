@@ -17,7 +17,7 @@
     <select class="bg-white" name="author">
       {% for user in users %}
         <option value="{{ user.id }}"
-        {% if post.author == user %}
+        {% if post.author.id == user.id %}
           selected
         {% endif %}>
           {{ user.username }}
