@@ -10,10 +10,10 @@
   <form action="/new_video/" method="post" class="max-w-2xl m-auto border border-gray-400 rounded-xl p-5">
     {% csrf_token %}
     <div class="flex flex-col gap-5 px-8 ">
-      <label for="Name" class="font-bold">Name :</label>
+      <label for="name" class="font-bold">Name :</label>
       <input type="text" name="name" class="bg-white border border-black"/>
 
-      <label for="Video_url" class="font-bold">Url :</label>
+      <label for="url" class="font-bold">Url :</label>
       <input type="url" name="url" class="bg-white border border-black"/>
 
       <label for="published_date" class="font-bold">Published Date :</label>

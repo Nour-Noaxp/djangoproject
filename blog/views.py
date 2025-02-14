@@ -35,12 +35,9 @@ def feed(request):
     element.is_video = hasattr(element, "url")
   return render(request, "feed.html", {"content": content})
 
-def get_date(element):
-  return element.published_date
-
 def show(request, post_id):
   post = Post.objects.get(pk=post_id)
-  return render(request, "show.html", {"post": post})
+  return render(request, "show.html", {"element": post})
 
 def delete(request, post_id):
   post = Post.objects.get(pk=post_id)
@@ -73,7 +70,7 @@ def new_video(request):
 
 def show_video(request, video_id):
   video = Video.objects.get(pk=video_id)
-  return render(request, "show_video.html", {"video": video})
+  return render(request, "show_video.html", {"element": video})
 
 def delete_video(request, video_id):
   video = Video.objects.get(pk=video_id)
