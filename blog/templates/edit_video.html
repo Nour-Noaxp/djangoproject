@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}
+  Edit Video
+{% endblock %}
+{% block content %}
+  <header>
+    <h3 class="text-3xl font-semibold">Edit Video Post</h3>
+  </header>
+  <form
+    class="flex flex-col gap-5 max-w-2xl mx-auto my-12 text-2xl border border-black border rounded-xl p-12"
+    method="post"
+  >
+    {% csrf_token %}
+    <label
+      class="font-bold"
+      for="name"
+      >Name :</label
+    >
+    <input
+      class="bg-white h-10 border border-black"
+      type="text"
+      name="name"
+      value="{{ video.name }}"
+    />
+
+    <label
+      class="font-bold"
+      for="url"
+      >Url</label
+    >
+    <input
+      class="bg-white border border-black"
+      name="url"
+      value="{{ video.url }}"/>
+
+    <label
+      class="font-bold"
+      for="published_date"
+      >Published Date :</label
+    >
+    <input
+      class="bg-white h-10 border border-black"
+      type="datetime-local"
+      name="published_date"
+      value="{{ video.published_date|date:"Y-m-d H:i" }}"
+    />
+
+    <input
+      class="mx-8 my-8 text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg px-5 py-2"
+      type="submit" value="Update"
+    />
+  </form>
+{% endblock %}
